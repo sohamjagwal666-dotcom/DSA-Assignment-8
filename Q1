@@ -1,21 +1,55 @@
-void inorder(node*root){
-    if(root==NULL)
-    return;
-    inorder(root->left);
-    cout<<root->data<<"  ";
-    inorder(root->right);
-}
-void preorder(node *root){
-    if (root == NULL)return;
-    cout<<root->data<<"  ";
-    preorder(root->left);
-    preorder(root->right);
+#include <iostream>
+using namespace std;
+class node{
+public:
+int data;
+node* left;
+node* right;
+node(int a){
+    data=a;
+    left=NULL;
+    right=NULL;
 
 }
-void postorder(node *root){
-    if (root == NULL)return;
-    postorder(root->left);
-     cout<<root->data<<"  ";
-    postorder(root->right);
+};
+void inorder(node* head){
+    node* temp=head;
+    if(temp==NULL){
+        return;
+    }
+    inorder(temp->left);
+    cout<<temp->data;
+    inorder(temp->right);
+}
 
+void preorder(node*head){
+    node*temp =head;
+    if(temp==NULL){
+        return;
+    }
+    cout<<temp->data;
+    preorder(temp->left);
+    preorder(temp->right);
+}
+void postorder(node*head){
+    node* temp=head;
+    if(temp==NULL){
+        return;
+    }
+    postorder(temp->left);
+    postorder(temp->right);
+    cout<<temp->data;
+
+}
+int main(){
+    node* one=new node(1);
+    node* two=new node(2);
+    node* three=new node(3);
+    node* four=new node(4);
+    node* five=new node(5);
+    one->left=two;
+    one->right=three;
+    two->left=four;
+    two->right=five;
+    postorder(one);
 }
