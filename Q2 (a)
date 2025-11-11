@@ -1,0 +1,115 @@
+#include <iostream>
+using namespace std;
+class node{
+public:
+int data;
+node* left;
+node* right;
+node(int a){
+    data=a;
+    left=NULL;
+    right=NULL;
+
+}
+};
+void inorder(node* head){
+    node* temp=head;
+    if(temp==NULL){
+        return;
+    }
+    inorder(temp->left);
+    cout<<temp->data;
+    inorder(temp->right);
+}
+
+void preorder(node*head){
+    node*temp =head;
+    if(temp==NULL){
+        return;
+    }
+    cout<<temp->data;
+    preorder(temp->left);
+    preorder(temp->right);
+}
+void postorder(node*head){
+    node* temp=head;
+    if(temp==NULL){
+        return;
+    }
+    postorder(temp->left);
+    postorder(temp->right);
+    cout<<temp->data;
+
+}
+node* insert(node*root,int d){
+    if(root==NULL){
+        return new node(d);
+    }
+    if(d<root->data){
+        root->left=insert(root->left,d);
+    }
+    else{
+        root->right=insert(root->right,d);
+    }
+    return root;
+}
+node* bst(int arr[],int n){
+    node* root=NULL;
+   for(int i=0;i<n;i++){
+    root=insert(root,arr[i]);
+   }
+   return root;
+
+}
+void search(node*root,int x){
+    if(root==NULL){
+        cout<<x<<" is not present in the tree."<<endl;
+        return;
+    }
+    if(x>root->data){
+        search(root->right,x);
+    }
+    else if(x==root->data){
+        cout<<x<<" is present in the tree.";
+        return;
+
+    }
+    else{
+        search(root->left,x);
+    }
+    
+}
+void search2(node* root,int x){
+    if(root==NULL){
+        cout<<"List is empty";
+        return;
+    }
+    node*temp=root;
+    while(temp!=NULL){
+        if(x==temp->data){
+        cout<<x<<" is present in the tree.";
+        return;}
+
+        else if(x>temp->data){
+            temp=temp->right;
+        
+    }
+    
+    
+    else{
+        temp=temp->left;
+    }
+        
+    }
+    if(!temp){
+        cout<<x<<" is not present in the tree.";
+    }
+}
+int main(){
+    
+    int arr[6]={3,1,2,5,16,7};
+
+    node* one=bst(arr,6);
+    
+    search2(one,7);
+}
