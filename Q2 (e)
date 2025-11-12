@@ -1,0 +1,27 @@
+void predecessor(node* root,int val){
+    node* pcr=NULL;
+    node* temp=root;
+    if(root==NULL){
+        cout<<"Empty tree"<<endl;
+        return;
+    }
+    while(temp!=NULL){
+    
+    if(temp->data<val){
+        pcr=temp;
+        temp=temp->right;
+
+    }
+    else if(temp->data>=val){
+        temp=temp->left;
+    }
+    
+    }
+    
+    if(pcr!=NULL){
+        cout<<"Predecessor for "<<val<<" is "<<pcr->data<<endl;
+        return;}
+    else{
+            cout<<"Predecessor for "<<val<<" is NULL"<<endl;
+            return;}
+}
