@@ -1,0 +1,17 @@
+node* insert(node*root,int d){
+    
+    if(root==NULL){
+        return new node(d);
+    }
+    if(d==root->data){
+        cout<<"Duplicate element being inserted. Command denied."<<endl;
+        return root;
+    }
+    if(d<root->data){
+        root->left=insert(root->left,d);
+    }
+    else{
+        root->right=insert(root->right,d);
+    }
+    return root;
+}
