@@ -1,0 +1,97 @@
+node* deletion(node* root, int val){
+    node* temp=root;
+    node*prev=NULL;
+    bool isr=true;
+    
+    
+    while(temp!=NULL&&temp->data!=val){
+        isr=true;
+        
+        if(temp->data<val){
+            prev=temp;
+            temp=temp->right;
+            isr=false;
+        }
+        else{
+            prev=temp;
+            temp=temp->left;
+            
+            
+        }
+    }
+    if(prev==NULL){
+        if(temp->right==NULL&&temp->left==NULL){
+         
+        root=NULL;
+        delete temp;
+        
+    }
+    else if(temp->right!=NULL&&temp->left==NULL){
+        root=temp->right;
+        delete temp;
+
+    }
+    else if(temp->right==NULL&&temp->left!=NULL){
+        root=temp->left;
+        delete temp;
+
+    }
+    else{
+        node* scr=succesor(root,val);
+        
+
+        int x=scr->data;
+        deletion(root,scr->data);
+        temp->data=x;
+    }
+    return root;
+
+
+    }
+    if(temp->right==NULL&&temp->left==NULL){
+        if(isr==false){
+            prev->right=NULL;
+            delete temp;
+        }
+        else{
+            prev->left=NULL;
+            delete temp;
+        }
+        
+        
+        
+        
+    }
+    else if(temp->right!=NULL&&temp->left==NULL){
+        if(isr==false){
+            prev->right=temp->right;
+            delete temp;
+        }
+        else{
+            prev->left=temp->right;
+            delete temp;
+        }
+
+    }
+    else if(temp->right==NULL&&temp->left!=NULL){
+        if(isr==false){
+            prev->right=temp->left;
+            delete temp;
+        }
+        else{
+            prev->left=temp->left;
+            delete temp;
+        }
+
+    }
+    else{
+        node* scr=succesor(root,val);
+        
+
+        int x=scr->data;
+        deletion(root,scr->data);
+        temp->data=x;
+    }
+    return root;
+
+}
