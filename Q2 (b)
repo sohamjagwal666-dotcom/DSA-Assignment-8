@@ -1,0 +1,11 @@
+void max(node* root){
+    if(root==NULL){
+        cout<<"Empty tree"<<endl;
+        return;
+    }
+    while(root->right!=NULL){
+        root=root->right;
+    }
+    cout<<"Max element is "<<root->data<<endl;
+    return;
+}
