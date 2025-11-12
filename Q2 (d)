@@ -1,0 +1,27 @@
+void succesor(node* root,int val){
+    node* scr=NULL;
+    node* temp=root;
+    if(root==NULL){
+        cout<<"Empty tree"<<endl;
+        return;
+    }
+    while(temp!=NULL){
+    
+    if(temp->data>val){
+        scr=temp;
+        temp=temp->left;
+
+    }
+    else if(temp->data<=val){
+        temp=temp->right;
+    }
+    
+    }
+    
+    if(scr!=NULL){
+        cout<<"Succesor for "<<val<<" is "<<scr->data<<endl;
+        return;}
+    else{
+            cout<<"Succesor for "<<val<<" is NULL"<<endl;
+            return;}
+}
