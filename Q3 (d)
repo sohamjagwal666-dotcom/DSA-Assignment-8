@@ -1,0 +1,11 @@
+int min_depth(node*root){
+    if(root==NULL){
+        return 0;
+    }
+    
+    int l=min_depth(root->left);
+    int r=min_depth(root->right);
+    
+    return std::min(l,r)+1;
+
+    }
