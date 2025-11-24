@@ -1,0 +1,16 @@
+bool is_bst(node* root,int min_val,int max_val){
+        node* temp=root;
+        
+        if(temp==NULL){
+            return true;
+
+        }
+        if(temp->data<min_val||temp->data>max_val){
+            return false;
+
+        }
+        else{
+            return is_bst(temp->left,min_val,temp->data)&&is_bst(temp->right,temp->data,max_val);
+        }
+        
+    }
