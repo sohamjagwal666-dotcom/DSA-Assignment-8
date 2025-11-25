@@ -1,0 +1,35 @@
+/* This is the Node class definition
+
+class Node {
+public:
+    Node* left;
+    Node* right;
+    int data;
+
+    Node(int data) {
+        this->left = NULL;
+        this->right = NULL;
+        this->data = data;
+    }
+};
+*/
+void Rightview(Node* root, vector<int> &result,int level){
+	Node*temp=root;
+	if(root==NULL){
+		return;
+		
+	}
+	if(result.size()==level){
+		result.push_back(temp->data);
+	}
+	Rightview(root->right,result,level+1);
+	Rightview(root->left,result,level+1);
+	
+}
+vector<int> rightView(Node* root) {
+	vector<int> v;
+	Rightview(root,v,0);
+	return v;
+	
+    
+}
