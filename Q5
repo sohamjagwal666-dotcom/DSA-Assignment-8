@@ -2,16 +2,22 @@ void deletion_max(int arr[],int&n){
     arr[1]=arr[n];
     n=n-1;
     int i=1;
+    int largest=i;
     while(true){
+        largest=i;
         int left=2*i;
         int right=(2*i)+1;
-        if(left<=n&&arr[i]<arr[left]&&arr[left]>arr[right]){
-            swap(arr[i],arr[left]);
-            i=left;
+        if(left<=n&&arr[largest]<arr[left]){
+           
+            largest=left;
         }
-        else if(right<=n&&arr[i]<arr[right]&&arr[right]>arr[left]){
-            swap(arr[i],arr[right]);
-            i=right;
+        if(right<=n&&arr[largest]<arr[right]){
+           
+            largest=right;
+        }
+        if(largest!=i){
+            swap(arr[i],arr[largest]);
+            i=largest;
         }
         else{
             break;
@@ -23,16 +29,22 @@ void deletion_min(int arr[],int&n){
     arr[1]=arr[n];
     n=n-1;
     int i=1;
+    int smallest=i;
     while(true){
+        smallest=i;
         int left=2*i;
         int right=(2*i)+1;
-        if(left<=n&&arr[i]>arr[left]&&arr[left]<arr[right]){
-            swap(arr[i],arr[left]);
-            i=left;
+        if(left<=n&&arr[smallest]>arr[left]){
+            
+            smallest=left;
         }
-        else if(right<=n&&arr[i]>arr[right]&&arr[right]<arr[left]){
-            swap(arr[i],arr[right]);
-            i=right;
+        if(right<=n&&arr[smallest]>arr[right]){
+           
+            smallest=right;
+        }
+        if(smallest!=i){
+            swap(arr[smallest],arr[i]);
+            i=smallest;
         }
         else{
             break;
