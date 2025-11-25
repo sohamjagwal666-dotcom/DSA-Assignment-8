@@ -1,0 +1,55 @@
+void deletion_max(int arr[],int&n){
+    arr[1]=arr[n];
+    n=n-1;
+    int i=1;
+    while(true){
+        int left=2*i;
+        int right=(2*i)+1;
+        if(left<=n&&arr[i]<arr[left]&&arr[left]>arr[right]){
+            swap(arr[i],arr[left]);
+            i=left;
+        }
+        else if(right<=n&&arr[i]<arr[right]&&arr[right]>arr[left]){
+            swap(arr[i],arr[right]);
+            i=right;
+        }
+        else{
+            break;
+        }
+
+    }
+}
+void deletion_min(int arr[],int&n){
+    arr[1]=arr[n];
+    n=n-1;
+    int i=1;
+    while(true){
+        int left=2*i;
+        int right=(2*i)+1;
+        if(left<=n&&arr[i]>arr[left]&&arr[left]<arr[right]){
+            swap(arr[i],arr[left]);
+            i=left;
+        }
+        else if(right<=n&&arr[i]>arr[right]&&arr[right]<arr[left]){
+            swap(arr[i],arr[right]);
+            i=right;
+        }
+        else{
+            break;
+        }
+
+    }
+}
+void heapsort_max(int arr[],int n){
+    
+    while(n!=0){
+    cout<<arr[1]<<" ";
+    deletion_max(arr,n);}
+}
+
+void heapsort_min(int arr[],int n){
+    
+    while(n!=0){
+    cout<<arr[1]<<" ";
+    deletion_min(arr,n);}
+}
