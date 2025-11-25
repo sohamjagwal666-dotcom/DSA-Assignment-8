@@ -1,0 +1,25 @@
+/* This is the Node class definition
+
+class Node {
+public:
+    Node* left;
+    Node* right;
+    int data;
+
+    Node(int data) {
+        this->left = NULL;
+        this->right = NULL;
+        this->data = data;
+    }
+};
+*/
+
+int getMaxDepth(Node* root) {
+	Node*temp=root;
+	if(temp==NULL){
+		return 0;
+	}
+	int left=getMaxDepth(temp->left);
+	int right=getMaxDepth(temp->right);
+	return std::max(left,right)+1;
+}
